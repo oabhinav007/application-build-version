@@ -10,6 +10,8 @@ public class StartWebApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(StartWebApplication.class, args);
+        String version = System.getenv("APP_VERSION");
+        System.out.println("Application version: " + version);
     }
 
     @Override
