@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Jenkins Build</title>
+</head>
+<body>
+    <h1>My Jenkins Build</h1>
+    <p id="build-version">Build version: 20</p>
+    
+    <script>
+      // Extract the build version from the Build version element
+      const buildVersion = document.getElementById('build-version').textContent.match(/\d+/)[0];
+      console.log(buildVersion,"++++++++++++++++++++++++++++++++++++++");
+      
+      // Redirect to welcome.html with the build version as a URL parameter
+      window.location.href = `welcome.html?buildVersion=${buildVersion}`;
+      console.log(window.location.href,'report-page');
+      export default buildVersion
+    </script>
+</body>
+</html>

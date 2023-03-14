@@ -9,15 +9,16 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 public class StartWebApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
-    String buildVersion = System.getenv("BUILD_NUMBER");
-    if (buildVersion == null || buildVersion.isEmpty()) {
-        throw new IllegalArgumentException("Missing value for BUILD_NUMBER");
+        SpringApplication.run(StartWebApplication.class, args);
+        //System.out.println("args.length="+args.length);
+        String version = args[0];
+        //System.getenv("app.version");
+        if (version == null || version.isEmpty()) {
+            throw new IllegalArgumentException("Missing value for APP_VERSION");
+        }
+        System.out.println(version);
+        
     }
-    System.out.println("Build version: " + buildVersion);
-
-    SpringApplication.run(StartWebApplication.class, args);
-}
-
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
