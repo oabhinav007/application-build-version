@@ -9,8 +9,10 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 public class StartWebApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
-        SpringApplication.run(StartWebApplication.class, args);
+        // SpringApplication.run(StartWebApplication.class, args);
         //System.out.println("args.length="+args.length);
+        String buildNumber = System.getenv("BUILD_NUMBER");
+        System.out.println(buildNumber);
         String version = args[0];
         //System.getenv("app.version");
         if (version == null || version.isEmpty()) {
