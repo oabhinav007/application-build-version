@@ -13,7 +13,7 @@ import java.util.Properties;
 @SpringBootApplication
 public class StartWebApplication extends SpringBootServletInitializer {
 
-    @Value("${build.number}")
+  //  @Value("${build.number}")
     String buildNumber;
 
     public static void main(String[] args) {

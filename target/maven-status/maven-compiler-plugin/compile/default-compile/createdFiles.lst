@@ -1,3 +1,3 @@
 zama\training\StartWebApplication.class
-zama\training\controller\VersionController.class
+zama\training\controller\BuildController.class
 zama\training\controller\WelcomeController.class

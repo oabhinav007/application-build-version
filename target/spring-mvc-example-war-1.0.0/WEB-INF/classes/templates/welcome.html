@@ -22,8 +22,8 @@
     <div class="starter-template">
         <h1>Spring Boot Web Thymeleaf Example</h1>
         <h2>
-            <span th:text="Hello"></span>
-            <span id="build-version"></span>
+            <span th:text="'Hello, ' + ${message}"></span>
+            <span th:text="'buildVersion: ' + ${build}"></span>
         </h2>
     </div>
 
@@ -36,14 +36,5 @@
 
 <script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
 <script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
-<script>
-  // Extract the build version from the URL parameter
-  const urlParams = new URLSearchParams(window.location.search);
-  const buildVersion = urlParams.get('buildVersion');
-  console.log(buildVersion,'report-page')
-  // Display the build version in the span element
-  const buildVersionSpan = document.getElementById('build-version');
-  buildVersionSpan.textContent = buildVersion;
-</script>
 </body>
 </html>

@@ -1,8 +1,11 @@
 package zama.training.controller;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
@@ -18,6 +21,9 @@ import org.apache.logging.log4j.Logger;
 @Controller
 public class WelcomeController {
     private static final Logger logger = LogManager.getLogger(WelcomeController.class);
+    public static String FILE_LOCATION = "/usr/local/tomcat/build.txt";
+    
+    //"D:/app-build-version/application-build-version/src/main/java/zama/training/controller/build.txt";
 
 	public static String PROPERTY_FILE_LOCATION = "/shared/dev.properties";
 	
@@ -25,11 +31,18 @@ public class WelcomeController {
     private String message;
 
     private List<String> tasks = Arrays.asList("a", "b", "c", "d", "e", "f", "g");
-
+    public static void main(String[] args) {
+        String buildNumber = new WelcomeController().readBuildNumber();
+        //model.addAttribute("buildNumber", buildNumber);
+    }
     @GetMapping("/")
     public String main(Model model) {
         model.addAttribute("message", message);
         model.addAttribute("tasks", tasks);
+        String s = readBuildNumber();
+        System.out.println("hi" + s);
+        model.addAttribute("num", "6");
+        model.addAttribute("build", s);
         addParamsToModel(model);
         
         return "welcome"; //view
@@ -63,5 +76,29 @@ public class WelcomeController {
 			logger.error(e);
 		}
     	return props;
+    }
+    private String readBuildNumber() {
+        System.out.println("&&&&&&&&&&&&&&777");
+        String userDirectory = new File("").getAbsolutePath();
+        System.out.println(userDirectory);
+        String buildNumber = "";
+        try (FileInputStream fis = new FileInputStream(FILE_LOCATION)) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.startsWith("BUILD_NUMBER=")) {
+
+                    buildNumber = line.substring(13);
+                    System.out.println(buildNumber);
+                    break;
+                }
+            }
+            reader.close();
+        } catch (IOException e)
+        {System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        
+        return buildNumber;
     }
 }
