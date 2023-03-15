@@ -33,7 +33,7 @@ public class StartWebApplication extends SpringBootServletInitializer {
             Properties props = new Properties();
             props.load(input);
             String buildNumber = props.getProperty("BUILD_NUMBER");
-            System.out.println("Latest build number is: " + buildNumber);
+            System.out.println("Latest build version is: " + buildNumber);
         } catch (IOException ex) {
             System.err.println("Unable to read environment properties: " + ex.getMessage());
         }
