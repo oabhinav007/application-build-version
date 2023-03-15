@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class BuildController {
-    public static String FILE_LOCATION = "D:/app-build-version/application-build-version/src/main/java/zama/training/controller/build.txt";
+    public static String FILE_LOCATION = "D:/app-build-version/application-build-version/build.txt";
 
     @GetMapping("/build")
     public String getBuild(Model model) {
